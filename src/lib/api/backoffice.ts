@@ -9,6 +9,7 @@ export interface BackofficeDashboardResponse {
   queues: Array<{ id: string; title: string; pending: number; sla: string }>;
   customerSnapshots: Array<{ customerId: string; fullName: string; tier: string; status: string; availablePoints: number; lastOrderId: string }>;
   recentOrders: Array<{ orderId: string; customerId: string; status: string; payableUsd: number; reservedPoints: number; createdAt: string }>;
+  recentPointFlows?: Array<{ type: 'enrollment' | 'password_change' | 'login'; referenceId: string; customerEmailHash: string; stage: string; source: string; happenedAt: string }>;
 }
 
 async function safeFetch<T>(path: string, fallback: T): Promise<T> {
@@ -42,6 +43,7 @@ const dashboardFallback: BackofficeDashboardResponse = {
     { orderId: 'ord_mock_002', customerId: 'cust_001', status: 'placed', payableUsd: 109, reservedPoints: 2000, createdAt: '2026-06-05T10:30:00.000Z' },
     { orderId: 'ord_mock_001', customerId: 'cust_002', status: 'placed', payableUsd: 44, reservedPoints: 1500, createdAt: '2026-06-04T18:00:00.000Z' },
   ],
+  recentPointFlows: [],
 };
 
 export const getBackofficeDashboard = cache(async () => {

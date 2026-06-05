@@ -67,6 +67,25 @@ export default async function BackofficeHomePage({ params }: { params: Promise<{
         </BackofficeCard>
       </section>
 
+      {dashboard.recentPointFlows?.length ? (
+        <section style={{ marginTop: 24 }}>
+          <BackofficeCard>
+            <h2>{locale === 'es' ? 'Flujos recientes de points' : 'Recent points flows'}</h2>
+            <div className="list">
+              {dashboard.recentPointFlows.map((flow) => (
+                <div key={`${flow.type}-${flow.referenceId}`} className="list-item">
+                  <div>
+                    <strong>{flow.type}</strong>
+                    <div className="muted">{flow.stage} · {flow.source}</div>
+                  </div>
+                  <div className="muted">{flow.referenceId}</div>
+                </div>
+              ))}
+            </div>
+          </BackofficeCard>
+        </section>
+      ) : null}
+
     </>
   );
 }
