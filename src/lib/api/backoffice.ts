@@ -51,6 +51,32 @@ export const getBackofficeDashboard = cache(async () => {
 export async function getBackofficeCustomer(customerId: string) {
   return safeFetch(`/api/v1/backoffice/customers/${encodeURIComponent(customerId)}`, {
     source: 'mock' as const,
-    item: dashboardFallback.customerSnapshots.find((item) => item.customerId === customerId) ?? dashboardFallback.customerSnapshots[0],
+    item: dashboardFallback.customerSnapshots.find((item) => item.customerId === customerId)
+      ? {
+          ...(dashboardFallback.customerSnapshots.find((item) => item.customerId === customerId) ?? dashboardFallback.customerSnapshots[0]),
+          customerEmailHash: undefined,
+          enrollmentStatus: undefined,
+          enrollmentTransactionId: undefined,
+          passwordChangeStatus: undefined,
+          passwordChangeRequestId: undefined,
+          lastLoginId: undefined,
+          lastLoginAt: undefined,
+          source: undefined,
+          stage: undefined,
+          updatedAt: undefined,
+        }
+      : {
+          ...dashboardFallback.customerSnapshots[0],
+          customerEmailHash: undefined,
+          enrollmentStatus: undefined,
+          enrollmentTransactionId: undefined,
+          passwordChangeStatus: undefined,
+          passwordChangeRequestId: undefined,
+          lastLoginId: undefined,
+          lastLoginAt: undefined,
+          source: undefined,
+          stage: undefined,
+          updatedAt: undefined,
+        },
   });
 }

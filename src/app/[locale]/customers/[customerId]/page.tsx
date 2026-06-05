@@ -19,6 +19,15 @@ export default async function CustomerDetailPage({ params }: { params: Promise<{
           <div className="list-item"><span>Tier</span><strong>{customer.tier}</strong></div>
           <div className="list-item"><span>Available points</span><strong>{customer.availablePoints}</strong></div>
           <div className="list-item"><span>Last order</span><strong>{customer.lastOrderId}</strong></div>
+          <div className="list-item"><span>Email hash</span><strong>{customer.customerEmailHash ?? 'n/a'}</strong></div>
+          <div className="list-item"><span>Enrollment status</span><strong>{customer.enrollmentStatus ?? 'n/a'}</strong></div>
+          <div className="list-item"><span>Enrollment transaction</span><strong>{customer.enrollmentTransactionId ?? 'n/a'}</strong></div>
+          <div className="list-item"><span>Password change</span><strong>{customer.passwordChangeStatus ?? 'n/a'}</strong></div>
+          <div className="list-item"><span>Password request</span><strong>{customer.passwordChangeRequestId ?? 'n/a'}</strong></div>
+          <div className="list-item"><span>Last login</span><strong>{customer.lastLoginId ?? 'n/a'}</strong></div>
+          <div className="list-item"><span>Last login at</span><strong>{customer.lastLoginAt ?? 'n/a'}</strong></div>
+          <div className="list-item"><span>Profile stage</span><strong>{customer.stage ?? 'n/a'}</strong></div>
+          <div className="list-item"><span>Updated at</span><strong>{customer.updatedAt ?? 'n/a'}</strong></div>
         </div>
       </BackofficeCard>
     </>
