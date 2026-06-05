@@ -8,7 +8,7 @@ export interface BackofficeDashboardResponse {
   kpis: Array<{ label: string; value: string; trend: string }>;
   queues: Array<{ id: string; title: string; pending: number; sla: string }>;
   customerSnapshots: Array<{ customerId: string; fullName: string; tier: string; status: string; availablePoints: number; lastOrderId: string }>;
-  recentOrders: Array<{ orderId: string; customerId: string; status: string; payableUsd: number; reservedPoints: number; createdAt: string }>;
+  recentOrders: Array<{ orderId: string; customerId: string; reservationId?: string; status: string; currency?: string; payableUsd: number; reservedPoints: number; createdAt: string; lines?: Array<{ productId: string; sku: string; name: string; quantity: number; unitPriceUsd: number; lineSubtotalUsd: number; categoryId: string; categoryName: string }>; summary?: { itemCount: number; subtotalUsd: number; requestedPoints: number; reservedPoints: number; coveredUsd: number; payableUsd: number } }>;
 }
 
 async function safeFetch<T>(path: string, fallback: T): Promise<T> {
