@@ -67,24 +67,6 @@ export default async function BackofficeHomePage({ params }: { params: Promise<{
         </BackofficeCard>
       </section>
 
-      <section style={{ marginTop: 24 }}>
-        <BackofficeCard>
-          <h2>{dictionary.common.orders}</h2>
-          <div className="list">
-            {dashboard.recentOrders.map((order) => (
-              <div key={order.orderId} className="list-item">
-                <div>
-                  <strong>{order.orderId}</strong>
-                  <div className="muted">{order.customerId} · {order.status}</div>
-                </div>
-                <div>
-                  <Link href={`/${locale}/orders/${order.orderId}`}>USD {order.payableUsd}</Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </BackofficeCard>
-      </section>
     </>
   );
 }

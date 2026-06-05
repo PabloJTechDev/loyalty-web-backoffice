@@ -8,7 +8,7 @@ export interface BackofficeDashboardResponse {
   kpis: Array<{ label: string; value: string; trend: string }>;
   queues: Array<{ id: string; title: string; pending: number; sla: string }>;
   customerSnapshots: Array<{ customerId: string; fullName: string; tier: string; status: string; availablePoints: number; lastOrderId: string }>;
-  recentOrders: Array<{ orderId: string; customerId: string; reservationId?: string; status: string; currency?: string; payableUsd: number; reservedPoints: number; createdAt: string; lines?: Array<{ productId: string; sku: string; name: string; quantity: number; unitPriceUsd: number; lineSubtotalUsd: number; categoryId: string; categoryName: string }>; summary?: { itemCount: number; subtotalUsd: number; requestedPoints: number; reservedPoints: number; coveredUsd: number; payableUsd: number } }>;
+  recentOrders: Array<{ orderId: string; customerId: string; status: string; payableUsd: number; reservedPoints: number; createdAt: string }>;
 }
 
 async function safeFetch<T>(path: string, fallback: T): Promise<T> {
@@ -52,12 +52,5 @@ export async function getBackofficeCustomer(customerId: string) {
   return safeFetch(`/api/v1/backoffice/customers/${encodeURIComponent(customerId)}`, {
     source: 'mock' as const,
     item: dashboardFallback.customerSnapshots.find((item) => item.customerId === customerId) ?? dashboardFallback.customerSnapshots[0],
-  });
-}
-
-export async function getBackofficeOrder(orderId: string) {
-  return safeFetch(`/api/v1/backoffice/orders/${encodeURIComponent(orderId)}`, {
-    source: 'mock' as const,
-    item: dashboardFallback.recentOrders.find((item) => item.orderId === orderId) ?? dashboardFallback.recentOrders[0],
   });
 }
