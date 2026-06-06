@@ -82,3 +82,12 @@ export async function getBackofficeCustomer(customerId: string) {
         },
   });
 }
+
+export async function getBackofficeCustomerPoints(customerId: string) {
+  return safeFetch(`/api/v1/backoffice/customers/${encodeURIComponent(customerId)}/points`, {
+    customerId,
+    source: 'fallback',
+    balance: { customerId, balancePoints: 0, lifetimeAccrued: 0, lifetimeRedeemed: 0, updatedAt: new Date().toISOString() },
+    transactions: [],
+  });
+}
