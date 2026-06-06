@@ -3,7 +3,7 @@ import { cache } from 'react';
 const backofficeBaseUrl = process.env.BFF_BACKOFFICE_BASE_URL ?? 'http://localhost:3003';
 
 export interface BackofficeDashboardResponse {
-  source: 'mock';
+  source: 'mock' | 'live';
   generatedAt: string;
   kpis: Array<{ label: string; value: string; trend: string }>;
   queues: Array<{ id: string; title: string; pending: number; sla: string }>;

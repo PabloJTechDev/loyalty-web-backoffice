@@ -20,7 +20,7 @@ export default async function BackofficeHomePage({ params }: { params: Promise<{
       <BackofficePageHeader
         title={locale === 'es' ? 'Dashboard operativo backoffice' : 'Backoffice operational dashboard'}
         description={locale === 'es' ? 'Vista inicial para soporte, auditoría y seguimiento transversal.' : 'Initial view for support, audit, and cross-functional operational tracking.'}
-        aside={<span className="badge">{dashboard.source}</span>}
+        aside={<span className={`badge${dashboard.source === 'live' ? ' badge-live' : ''}`}>{dashboard.source}</span>}
       />
 
       <section className="grid grid-3">
