@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { BackofficeCard } from '@/features/backoffice/components/BackofficeCard';
-import { BackofficePageHeader } from '@/features/backoffice/components/BackofficePageHeader';
-import { getBackofficeDashboard } from '@/lib/api/backoffice';
-import { getDictionary } from '@/lib/i18n/dictionaries';
-import { isLocale } from '@/lib/i18n/config';
+import { BackofficeCard } from '@/shared/ui/BackofficeCard';
+import { BackofficePageHeader } from '@/shared/ui/BackofficePageHeader';
+import { getBackofficeDashboard } from '@/shared/api/backoffice';
+import { getDictionary } from '@/shared/i18n/dictionaries';
+import { isLocale } from '@/shared/i18n/config';
 
 export default async function BackofficeHomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

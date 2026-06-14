@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
-import { BackofficeCard } from '@/features/backoffice/components/BackofficeCard';
-import { BackofficePageHeader } from '@/features/backoffice/components/BackofficePageHeader';
-import { getBackofficeCustomer, getBackofficeCustomerPoints } from '@/lib/api/backoffice';
-import { isLocale } from '@/lib/i18n/config';
+import { BackofficeCard } from '@/shared/ui/BackofficeCard';
+import { BackofficePageHeader } from '@/shared/ui/BackofficePageHeader';
+import { getBackofficeCustomer, getBackofficeCustomerPoints } from '@/shared/api/backoffice';
+import { isLocale } from '@/shared/i18n/config';
 
 export default async function CustomerDetailPage({ params }: { params: Promise<{ locale: string; customerId: string }> }) {
   const { locale, customerId } = await params;
