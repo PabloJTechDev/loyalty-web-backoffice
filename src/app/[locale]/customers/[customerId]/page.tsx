@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { BackofficeCard } from '@/shared/ui/BackofficeCard';
 import { BackofficePageHeader } from '@/shared/ui/BackofficePageHeader';
 import { getBackofficeCustomer, getBackofficeCustomerPoints } from '@/shared/api/backoffice';
-import { isLocale } from '@/shared/i18n/config';
+import { isLocale } from '@pablojtech/loyalty-shared-web/i18n';
 
 export default async function CustomerDetailPage({ params }: { params: Promise<{ locale: string; customerId: string }> }) {
   const { locale, customerId } = await params;

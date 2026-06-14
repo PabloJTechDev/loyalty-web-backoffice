@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import { registry } from '@/shared/metrics';
+import { metricsRegistry } from '@pablojtech/loyalty-shared-web/metrics';
 
 export async function GET() {
-  return new NextResponse(await registry.metrics(), {
+  return new NextResponse(await metricsRegistry.metrics(), {
     headers: {
-      'Content-Type': registry.contentType,
+      'Content-Type': metricsRegistry.contentType,
     },
   });
 }

@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation';
 import { BackofficeCard } from '@/shared/ui/BackofficeCard';
 import { BackofficePageHeader } from '@/shared/ui/BackofficePageHeader';
 import { getBackofficeDashboard } from '@/shared/api/backoffice';
-import { getDictionary } from '@/shared/i18n/dictionaries';
-import { isLocale } from '@/shared/i18n/config';
+import { getDictionary } from '@pablojtech/loyalty-shared-web/i18n';
+import { isLocale } from '@pablojtech/loyalty-shared-web/i18n';
 
 export default async function BackofficeHomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import type { Dictionary } from '@/shared/i18n/dictionaries';
-import type { Locale } from '@/shared/i18n/config';
+import type { Dictionary } from '@pablojtech/loyalty-shared-web/i18n';
+import type { Locale } from '@pablojtech/loyalty-shared-web/i18n';
 
 export function BackofficeShell({ children, locale, dictionary }: { children: ReactNode; locale: Locale; dictionary: Dictionary }) {
   return (
